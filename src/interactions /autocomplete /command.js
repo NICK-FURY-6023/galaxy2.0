@@ -31,7 +31,7 @@ const commandAutoCompleteOption = {
   name: 'command',
   description: 'Command name or category',
   autocomplete: true,
-  required: true
+  required: false
 };
 module.exports.commandAutoCompleteOption = commandAutoCompleteOption;
 
