@@ -17,19 +17,19 @@ const config = {
     reverbNation: true,
     spotify: {
       enabled: true,
-      clientId: 'ecbc88f9465a44b89ed9c0f7225375ad',
-      clientSecret: '6851efbd13c0427b9ecd1fcaf4d97046',
+      clientId: 'paste id',
+      clientSecret: 'paste key',
     },
   },
- presence: {
-    status: 'dnd',
+  presence: {
+    status: 'online',
     activities: [
       {
         name: '/play',
         type: 'PLAYING',
       },
       {
-        name: 'BOT UNDER MAINTENANCE',
+        name: 'BOT UNDER MAINTENCE',
         type: 'LISTENING',
       },
       {
@@ -39,8 +39,8 @@ const config = {
     ],
   },
   permissions: {
-    ownerId: '1040792557199818842',
-    developers: ['761635564835045387'],
+    ownerId: '761635564835045387',
+    developers: ['947891831516065834'],
   },
   supportServerInviteLink: 'https://discord.gg/CdCfgSC3qy',
   permissionsBase: [
@@ -51,15 +51,15 @@ const config = {
 };
 
 function changeActivities(client) {
-  const interval = 3000; // 5 seconds
+  const interval = 5000; // 5 seconds
 
   setInterval(() => {
-    const randomActivityIndex = Math.floor(Math.random() * config.presence.activities.length);
-    client.user.setPresence({
-      status: config.presence.status,
-      activities: [config.presence.activities[randomActivityIndex]],
-    });
+    const randomActivity = Math.floor(Math.random() * config.presence.activities.length);
+    config.presence.activities[0] = config.presence.activities[randomActivity];
+ //   client.user.setPresence(config.presence);
   }, interval);
 }
+
+changeActivities();
 
 module.exports = config;
