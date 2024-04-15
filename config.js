@@ -1,7 +1,7 @@
 const { PermissionsBitField } = require('discord.js');
 
 const config = {
-  defaultVolume: 150,
+  defaultVolume: 100,
   defaultRepeatMode: 0,
   defaultLeaveOnEndCooldown: 180,
   defaultLeaveOnEmpty: true,
@@ -17,19 +17,19 @@ const config = {
     reverbNation: true,
     spotify: {
       enabled: true,
-      clientId: 'paste id',
-      clientSecret: 'paste key',
+      clientId: 'ecbc88f9465a44b89ed9c0f7225375ad',
+      clientSecret: '6851efbd13c0427b9ecd1fcaf4d97046',
     },
   },
-  presence: {
-    status: 'online',
+ presence: {
+    status: 'dnd',
     activities: [
       {
         name: '/play',
         type: 'PLAYING',
       },
       {
-        name: 'BOT UNDER MAINTENCE',
+        name: 'BOT UNDER MAINTENANCE',
         type: 'LISTENING',
       },
       {
@@ -39,8 +39,8 @@ const config = {
     ],
   },
   permissions: {
-    ownerId: '761635564835045387',
-    developers: ['947891831516065834'],
+    ownerId: '1040792557199818842',
+    developers: ['761635564835045387'],
   },
   supportServerInviteLink: 'https://discord.gg/CdCfgSC3qy',
   permissionsBase: [
@@ -51,15 +51,15 @@ const config = {
 };
 
 function changeActivities(client) {
-  const interval = 5000; // 5 seconds
+  const interval = 3000; // 5 seconds
 
   setInterval(() => {
-    const randomActivity = Math.floor(Math.random() * config.presence.activities.length);
-    config.presence.activities[0] = config.presence.activities[randomActivity];
- //   client.user.setPresence(config.presence);
+    const randomActivityIndex = Math.floor(Math.random() * config.presence.activities.length);
+    client.user.setPresence({
+      status: config.presence.status,
+      activities: [config.presence.activities[randomActivityIndex]],
+    });
   }, interval);
 }
-
-changeActivities();
 
 module.exports = config;
