@@ -357,6 +357,8 @@ const handlePagination = async (
   });
 };
 
+// Set button 
+
 const getPaginationComponents = (pageNow, pageTotal, prevCustomId, nextCustomId, disableAll = false) => {
   return [
     new ActionRowBuilder()
